@@ -14,11 +14,12 @@
     };
     $scope.checkIf = function(){
       var palabras= 0;
-      if ($scope.lista != null){
+      if ($scope.lista != null && $scope.lista !=""){
         var listaPalabras =$scope.lista.split(",");
-        var palabras = listaPalabras.length;
+        //var palabras = listaPalabras.length;
         console.log("Palabras: "+ listaPalabras.length);
       }
+      palabras = cuentaPalabras($scope.lista.split(","));
       if (palabras == 0) {
         $scope.mensaje = "Please enter data first";
         $scope.msgStyle.color = "red";
@@ -31,4 +32,13 @@
             }
     };
   };
+  function cuentaPalabras(lista){
+    var n = 0;
+    for (var i=0; i < lista.length; i++ ){
+      if (lista[i] != null && lista[i] !="") n++;
+    }
+    console.log("tenemos palabras: "+ n)
+    return n;
+
+  }
 })();
