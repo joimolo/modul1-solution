@@ -14,9 +14,10 @@
    <div class="container" ng-controller="LunchCheckController">
      <h1>Lunch Checker</h1>
          <div class="form-group">
-             <input ng-model="lista" id="lunch-menu" type="text"
+             <input ng-model="lista" ng-focus="borraMsg()" id="lunch-menu" type="text"
              placeholder="list comma separated dishes you usually have for lunch"
              class="form-control">
+             {{comment}}
          </div>
          <div class="form-group">
              <button ng-click="checkIf()" class="btn btn-default">Check If Too Much</button>

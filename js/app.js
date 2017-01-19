@@ -6,20 +6,30 @@
   LunchCheckController.$inject = ['$scope'];
 
   function LunchCheckController($scope){
+    $scope.comment ="(Empty item, i.e., , , NOT CONSIDER as an item towards to the count.)";
     $scope.mensaje = "";
     $scope.msgStyle ={
       "color" : "white",
       "border-style":"solid",
       "border-color": "white"
     };
+    $scope.borraMsg = function () {
+      $scope.mensaje = "";
+      $scope.msgStyle.color = "white";
+      $scope.msgStyle["border-color"]= "white"
+    }
+
+
     $scope.checkIf = function(){
       var palabras= 0;
       if ($scope.lista != null && $scope.lista !=""){
         var listaPalabras =$scope.lista.split(",");
         //var palabras = listaPalabras.length;
         console.log("Palabras: "+ listaPalabras.length);
+      } else {
+        listaPalabras="";
       }
-      palabras = cuentaPalabras($scope.lista.split(","));
+      palabras = cuentaPalabras(listaPalabras);
       if (palabras == 0) {
         $scope.mensaje = "Please enter data first";
         $scope.msgStyle.color = "red";
